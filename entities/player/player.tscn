@@ -1,0 +1,152 @@
+[gd_scene load_steps=13 format=3 uid="uid://dm4mgs8podqwu"]
+
+[ext_resource type="PackedScene" uid="uid://ctfkxbnotqe23" path="res://entities/player/dummy_skin.tscn" id="1_gqg58"]
+[ext_resource type="Script" path="res://entities/player/player.gd" id="1_hx38m"]
+[ext_resource type="Resource" uid="uid://de3bblxqca5ba" path="res://entities/player/player_stats.tres" id="2_qkvwj"]
+[ext_resource type="PackedScene" uid="uid://b2dl6y1b0lhji" path="res://entities/player/player_camera.tscn" id="3_1bas8"]
+[ext_resource type="Script" path="res://state_machine/state_machine.gd" id="4_nabrx"]
+[ext_resource type="Script" path="res://entities/player/states/idle.gd" id="5_r7tbm"]
+[ext_resource type="Script" path="res://entities/player/states/walk.gd" id="6_38aux"]
+[ext_resource type="Script" path="res://entities/player/player_movement.gd" id="6_ougiu"]
+[ext_resource type="Script" path="res://entities/player/states/run.gd" id="7_turdh"]
+[ext_resource type="Script" path="res://entities/player/states/fall.gd" id="9_rrde3"]
+[ext_resource type="Script" path="res://entities/player/states/jump.gd" id="10_2lkia"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hix02"]
+radius = 0.495024
+height = 2.32385
+
+[node name="Player" type="CharacterBody3D"]
+collision_layer = 2
+collision_mask = 61
+script = ExtResource("1_hx38m")
+stats = ExtResource("2_qkvwj")
+
+[node name="DummySkin" parent="." instance=ExtResource("1_gqg58")]
+
+[node name="Skeleton3D" parent="DummySkin/Rig" index="0"]
+bones/1/position = Vector3(0, 0.377311, 0)
+bones/1/rotation = Quaternion(-1.11123e-10, 0.0431578, 2.57241e-09, 0.999068)
+bones/2/rotation = Quaternion(-6.93889e-18, 7.10543e-15, 4.93038e-32, 1)
+bones/3/rotation = Quaternion(8.27181e-25, 3.72529e-09, -2.75506e-40, 1)
+bones/4/position = Vector3(0.212007, 0.134132, 7.92996e-08)
+bones/4/rotation = Quaternion(-0.554841, -0.0575126, -0.638108, 0.530718)
+bones/5/rotation = Quaternion(1.00807e-08, -7.9528e-08, -0.512089, 0.858933)
+bones/7/rotation = Quaternion(-0.321843, -0.334386, 0.150059, 0.872975)
+bones/8/position = Vector3(-6.93672e-09, 0.0961252, -0.0575)
+bones/8/rotation = Quaternion(0.00052389, 0.000523879, -0.705181, 0.709027)
+bones/9/position = Vector3(-0.212007, 0.134132, 8.6814e-08)
+bones/9/rotation = Quaternion(-0.613233, 0.0778143, 0.613382, 0.491581)
+bones/10/rotation = Quaternion(2.03078e-08, 5.40015e-08, 0.534603, 0.845103)
+bones/12/rotation = Quaternion(-0.320644, 0.31045, -0.232143, 0.864244)
+bones/13/position = Vector3(-1.5415e-08, 0.0961251, -0.0575)
+bones/13/rotation = Quaternion(0.00168469, 0.00198431, 0.705356, 0.708848)
+bones/14/rotation = Quaternion(-5.80608e-11, -0.0313417, -1.88012e-09, 0.999509)
+bones/17/position = Vector3(0.170945, 0.113587, 1.59941e-08)
+bones/17/rotation = Quaternion(0.99134, 0.0832243, 0.077347, 0.0658531)
+bones/18/rotation = Quaternion(0.339054, 5.89153e-08, -2.40809e-07, 0.940767)
+bones/19/rotation = Quaternion(-0.592188, -0.203967, 0.0667368, 0.776696)
+bones/20/rotation = Quaternion(7.75796e-06, 0.920165, -0.391532, -1.70245e-06)
+bones/21/position = Vector3(-0.170945, 0.113587, 1.55755e-08)
+bones/21/rotation = Quaternion(0.993609, -0.0320747, 0.0303379, 0.103881)
+bones/22/rotation = Quaternion(0.389594, -6.07532e-08, 2.72523e-07, 0.920987)
+bones/23/rotation = Quaternion(-0.620739, 0.113326, -0.0186832, 0.775559)
+bones/24/rotation = Quaternion(-8.93489e-05, 0.920222, -0.391398, 2.0291e-05)
+bones/25/rotation = Quaternion(0.707107, -2.29302e-07, -4.60552e-08, 0.707107)
+bones/26/position = Vector3(0.202182, 0.0259903, 0.205181)
+bones/26/rotation = Quaternion(-0.707107, -7.05285e-08, -7.05285e-08, 0.707107)
+bones/27/rotation = Quaternion(9.65792e-09, 1.77955e-09, 0.985719, -0.168398)
+bones/28/position = Vector3(-2.60494e-08, 0.213436, -5.1715e-09)
+bones/28/rotation = Quaternion(-1.01273e-07, 0.391084, 0.920355, -3.35091e-08)
+bones/29/position = Vector3(8.58988e-09, 0.16565, -2.40963e-09)
+bones/30/rotation = Quaternion(1, -2.33136e-09, 1.99777e-07, -1.34211e-15)
+bones/32/rotation = Quaternion(0.707107, -3.82385e-08, 1.45009e-07, 0.707107)
+bones/33/rotation = Quaternion(-0.707107, -7.05285e-08, -7.05285e-08, 0.707107)
+bones/34/rotation = Quaternion(-5.83589e-09, 6.43837e-10, 0.994809, 0.101756)
+bones/35/position = Vector3(-1.11482e-08, 0.213436, -2.50942e-15)
+bones/35/rotation = Quaternion(-1.05796e-07, 0.391084, 0.920355, -2.58643e-08)
+bones/36/position = Vector3(-6.31128e-09, 0.16565, 2.70695e-09)
+bones/37/rotation = Quaternion(1, 3.76526e-09, 1.94879e-07, 7.45058e-09)
+bones/39/rotation = Quaternion(-0.707107, -7.27951e-08, -7.27951e-08, 0.707107)
+bones/40/position = Vector3(0.520841, 0.780865, -0.0576374)
+bones/40/rotation = Quaternion(0.794627, -1.11759e-07, 0.607098, -5.96046e-08)
+bones/41/rotation = Quaternion(-0.707107, -7.27951e-08, -7.27951e-08, 0.707107)
+bones/42/position = Vector3(-0.510844, 0.780865, 0.0597369)
+bones/42/rotation = Quaternion(0.758253, 1.52737e-07, -0.651961, 1.11759e-08)
+
+[node name="Dummy_Helmet" parent="DummySkin/Rig/Skeleton3D" index="0"]
+transform = Transform3D(0.99972, -1.40143e-09, 0.0236466, 1.39341e-09, 1, 3.55686e-10, -0.0236466, -3.22637e-10, 0.99972, -7.08694e-09, 1.18752, -1.19168e-07)
+
+[node name="Dummy_TargetOnHisBack" parent="DummySkin/Rig/Skeleton3D" index="1"]
+transform = Transform3D(0.996275, 0.0149746, 0.0849252, 5.13043e-09, 0.984808, -0.173648, -0.0862353, 0.173001, 0.981139, -0.0237211, 0.861882, -0.27405)
+
+[node name="PlayerCamera" parent="." instance=ExtResource("3_1bas8")]
+transform = Transform3D(-1, 3.69465e-08, -7.92319e-08, 0, 0.906308, 0.422618, 8.74228e-08, 0.422618, -0.906308, 0, 1.5, 0)
+min_limit_x = -0.8
+max_limit_x = -0.2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.16937, 0)
+shape = SubResource("CapsuleShape3D_hix02")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("animation_tree", "starting_state", "movement")]
+script = ExtResource("4_nabrx")
+animation_tree = NodePath("../DummySkin/AnimationTree")
+starting_state = NodePath("Idle")
+movement = NodePath("../PlayerMovement")
+
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("jump_state", "walk_state", "run_state", "fall_state")]
+script = ExtResource("5_r7tbm")
+jump_state = NodePath("../Jump")
+walk_state = NodePath("../Walk")
+run_state = NodePath("../Run")
+fall_state = NodePath("../Fall")
+animation_parameter_path = "parameters/MovementStateMachine/playback"
+enter_animation_name = "Idle"
+
+[node name="Walk" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "run_state", "jump_state", "fall_state")]
+script = ExtResource("6_38aux")
+idle_state = NodePath("../Idle")
+run_state = NodePath("../Run")
+jump_state = NodePath("../Jump")
+fall_state = NodePath("../Fall")
+animation_parameter_path = "parameters/MovementStateMachine/playback"
+enter_animation_name = "Walk"
+
+[node name="Run" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "walk_state", "jump_state", "fall_state")]
+script = ExtResource("7_turdh")
+idle_state = NodePath("../Idle")
+walk_state = NodePath("../Walk")
+jump_state = NodePath("../Jump")
+fall_state = NodePath("../Fall")
+animation_parameter_path = "parameters/MovementStateMachine/playback"
+enter_animation_name = "Run"
+
+[node name="Fall" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "walk_state", "run_state")]
+script = ExtResource("9_rrde3")
+idle_state = NodePath("../Idle")
+walk_state = NodePath("../Walk")
+run_state = NodePath("../Run")
+animation_parameter_path = "parameters/MovementStateMachine/playback"
+enter_animation_name = "Fall"
+exit_animation_name = "Land"
+
+[node name="Jump" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "walk_state", "run_state", "fall_state")]
+script = ExtResource("10_2lkia")
+idle_state = NodePath("../Idle")
+walk_state = NodePath("../Walk")
+run_state = NodePath("../Run")
+fall_state = NodePath("../Fall")
+animation_parameter_path = "parameters/MovementStateMachine/playback"
+enter_animation_name = "Jump"
+
+[node name="PlayerMovement" type="Node" parent="." node_paths=PackedStringArray("camera", "parent")]
+script = ExtResource("6_ougiu")
+camera = NodePath("../PlayerCamera")
+jump_height = 3.0
+parent = NodePath("..")
+stats = ExtResource("2_qkvwj")
+acceleration_rate = 10.0
+deceleration_rate = 20.0
+
+[editable path="DummySkin"]

@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2dl6y1b0lhji"]
+
+[ext_resource type="Script" path="res://entities/player/player_camera.gd" id="1_hoqlt"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_tweqw"]
+
+[node name="PlayerCamera" type="SpringArm3D"]
+shape = SubResource("SphereShape3D_tweqw")
+spring_length = 6.5
+script = ExtResource("1_hoqlt")
+
+[node name="Camera3D" type="Camera3D" parent="."]
