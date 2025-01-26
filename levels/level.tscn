@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cn6bwjbh6ylhp"]
 
 [ext_resource type="PackedScene" uid="uid://dm4mgs8podqwu" path="res://entities/player/player.tscn" id="1_b6ggu"]
-[ext_resource type="MeshLibrary" uid="uid://dc2obi3y5m8lo" path="res://environments/prototype/prototype_tiles.tres" id="2_xaopj"]
+[ext_resource type="MeshLibrary" uid="uid://df06wfjidr4ly" path="res://environments/prototype/prototype_tiles.tres" id="2_xaopj"]
 [ext_resource type="PackedScene" uid="uid://q2o0rbh83tyw" path="res://environments/prototype/objects/box.tscn" id="3_vgayu"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fqnim"]
@@ -42,7 +42,7 @@ data = {
 mesh_library = ExtResource("2_xaopj")
 cell_size = Vector3(4, 2, 4)
 data = {
-"cells": PackedInt32Array(65535, 2, 0, 65535, 1, 0, 65535, 3, 0, 65535, 4, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 1, 1, 0, 1, 2, 0, 1, 3, 0, 1, 4, 0, 2, 1, 0, 2, 2, 0, 2, 3, 0, 2, 4, 0, 1, 0, 655365, 0, 0, 655368, 2, 0, 655369, 3, 1, 1048579, 3, 2, 1048579, 3, 3, 1048579, 3, 4, 1048579, 2, 5, 3, 1, 5, 3, 0, 5, 3, 65535, 5, 3, 65534, 4, 1441795, 65534, 3, 1441795, 65534, 2, 1441795, 65534, 1, 1441795, 65535, 0, 655363)
+"cells": PackedInt32Array(65535, 2, 0, 65535, 1, 0, 65535, 3, 0, 65535, 4, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 1, 1, 0, 1, 2, 0, 1, 3, 0, 1, 4, 0, 2, 1, 0, 2, 2, 0, 2, 3, 0, 2, 4, 0, 1, 0, 655365, 0, 0, 655368, 2, 0, 655369, 3, 1, 1048579, 3, 2, 1048579, 3, 3, 1048579, 3, 4, 1048579, 2, 5, 3, 1, 5, 3, 0, 5, 3, 65535, 5, 3, 65534, 4, 1441795, 65534, 3, 1441795, 65534, 2, 1441795, 65534, 1, 1441795, 65535, 0, 655363, 65534, 5, 1441795)
 }
 
 [node name="Objects" type="Node3D" parent="Environment"]
